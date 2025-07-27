@@ -38,7 +38,7 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         transition: transform 0.2s ease;
     }
-    .feed:hover{
+    .feed:hover {
         transform: translateY(-5px);
     }
     .feed h2 {
@@ -59,12 +59,69 @@
         color: #007BFF;
         font-weight: 500;
     }
-    .feed a:hover{
+    .feed a:hover {
         text-decoration: underline;
     }
-</style>
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to right, #f4f4f4, #e0e0e0);
+        color: #333;
+        transition: background 0.5s ease;
+    }
+    h1 {
+        color: #222;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .feed-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .feed {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feed:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .feed h2 {
+        font-size: 18px;
+        margin-top: 0;
+        color: #007BFF;
+    }
+    .feed ul {
+        list-style: none;
+        padding: 0;
+    }
+    .feed li {
+        margin-bottom: 10px;
+    }
+    .feed a {
+        text-decoration: none;
+        color: #007BFF;
+        transition: color 0.3s ease;
+    }
+    .feed a:hover {
+        color: #0056b3;
+    }
+    </style>
+
+<link href="https://img.icons8.com/ios-filled/50/news.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
+<div style="text-align:center; margin-bottom: 20px;">
+<img alt="Logo Notizie" src="https://img.icons8.com/ios-filled/100/news.png" style="width:60px;"/>
+</div>
+
 <header><h1>Notizie in Tempo Reale dal Mondo</h1></header>
 <div class="feed-container" id="feeds"></div>
 <script>
@@ -97,5 +154,12 @@
                 });
         });
     </script>
+
+<footer style="text-align:center; margin-top: 40px; padding: 20px; background:#222; color:white; font-size:14px;">
+        Seguici su 
+        <a href="https://www.instagram.com" style="color:#E1306C; text-decoration:none; margin:0 10px;" target="_blank">Instagram</a> | 
+        <a href="https://www.twitter.com" style="color:#1DA1F2; text-decoration:none; margin:0 10px;" target="_blank">X</a>
+<div style="margin-top:10px;">© 2024 Notizie Globali</div>
+</footer>
 </body>
 </html>
