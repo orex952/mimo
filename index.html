@@ -1,25 +1,73 @@
 
 <!DOCTYPE html>
+
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <title>Notizie in Tempo Reale dal Mondo</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
-        h1 { text-align: center; }
-        .feed-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .feed { background: white; padding: 15px; border-radius: 8px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .feed h2 { font-size: 18px; margin-top: 0; }
-        .feed ul { list-style: none; padding: 0; }
-        .feed li { margin-bottom: 10px; }
-        .feed a { text-decoration: none; color: #007BFF; }
-    </style>
+<head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<title>Notizie in Tempo Reale dal Mondo</title>
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+    header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    header h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .feed-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    .feed {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 320px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.2s ease;
+    }
+    .feed:hover {
+        transform: translateY(-5px);
+    }
+    .feed h2 {
+        font-size: 20px;
+        margin-top: 0;
+        color: #1a1a1a;
+    }
+    .feed ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .feed li {
+        margin-bottom: 12px;
+    }
+    .feed a {
+        text-decoration: none;
+        color: #007BFF;
+        font-weight: 500;
+    }
+    .feed a:hover {
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-    <h1>Notizie in Tempo Reale dal Mondo</h1>
-    <div class="feed-container" id="feeds"></div>
-
-    <script>
+<header><h1>Notizie in Tempo Reale dal Mondo</h1></header>
+<div class="feed-container" id="feeds"></div>
+<script>
         const feeds = [
             { name: "BBC", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
             { name: "CNN", url: "http://rss.cnn.com/rss/cnn_topstories.rss" },
