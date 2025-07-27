@@ -112,8 +112,25 @@
     .feed a:hover {
         color: #0056b3;
     }
-    </style>
-
+    
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #121212;
+        color: #e0e0e0;
+    }
+    .feed {
+        background: #1e1e1e;
+        box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    .feed a {
+        color: #90caf9;
+    }
+    header, footer {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+}
+</style>
 <link href="https://img.icons8.com/ios-filled/50/news.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -121,7 +138,6 @@
 <div style="text-align:center; margin-bottom: 20px;">
 <img alt="Logo Notizie" src="https://img.icons8.com/ios-filled/100/news.png" style="width:60px;"/>
 </div>
-
 <header><h1>Notizie in Tempo Reale dal Mondo</h1></header>
 <div class="feed-container" id="feeds"></div>
 <script>
@@ -154,7 +170,6 @@
                 });
         });
     </script>
-
 <footer style="text-align:center; margin-top: 40px; padding: 20px; background:#222; color:white; font-size:14px;">
         Seguici su 
         <a href="https://www.instagram.com" style="color:#E1306C; text-decoration:none; margin:0 10px;" target="_blank">Instagram</a> | 
