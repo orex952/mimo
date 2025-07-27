@@ -5,7 +5,6 @@
 <head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <title>Notizie in Tempo Reale dal Mondo</title>
-
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
@@ -137,8 +136,26 @@
             color: #fff;
         }
     }
-</style>
 
+.feed-paragraph {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--bg-section, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.feed-paragraph:hover {
+    transform: scale(1.01);
+}
+.feed-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+</style>
 <link href="https://img.icons8.com/ios-filled/50/news.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -180,7 +197,7 @@
     </script>
 <footer style="text-align:center; margin-top: 40px; padding: 20px; background:#222; color:white; font-size:14px;">
         Seguici su 
-        <a href="https://www.instagram.com" style="color:#E1306C; text-decoration:none; margin:0 10px;" target="_blank"><a href="https://www.instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="height:24px;"></a></a> | 
+        <a href="https://www.instagram.com" style="color:#E1306C; text-decoration:none; margin:0 10px;" target="_blank"><a href="https://www.instagram.com" target="_blank"><img alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="height:24px;"/></a></a> | 
         <a href="https://www.twitter.com" style="color:#1DA1F2; text-decoration:none; margin:0 10px;" target="_blank">X</a>
 <div style="margin-top:10px;">© 2025 Notizie Globali</div>
 </footer>
