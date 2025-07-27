@@ -5,132 +5,140 @@
 <head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <title>Notizie in Tempo Reale dal Mondo</title>
+
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
     body {
-        font-family: 'Inter', sans-serif;
-        background: #f9f9f9;
         margin: 0;
-        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(to right, #f0f2f5, #e3e6ea);
         color: #333;
+        transition: background 0.3s, color 0.3s;
     }
+
     header {
         background-color: #1a1a1a;
         color: white;
-        padding: 30px 20px;
-        text-align: center;
-    }
-    header h1 {
-        margin: 0;
-        font-size: 2em;
-    }
-    .feed-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 30px 20px;
-    }
-    .feed {
-        background: white;
         padding: 20px;
-        border-radius: 10px;
-        width: 320px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: transform 0.2s ease;
-    }
-    .feed:hover {
-        transform: translateY(-5px);
-    }
-    .feed h2 {
-        font-size: 20px;
-        margin-top: 0;
-        color: #1a1a1a;
-    }
-    .feed ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .feed li {
-        margin-bottom: 12px;
-    }
-    .feed a {
-        text-decoration: none;
-        color: #007BFF;
-        font-weight: 500;
-    }
-    .feed a:hover {
-        text-decoration: underline;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(to right, #f4f4f4, #e0e0e0);
-        color: #333;
-        transition: background 0.5s ease;
+    header img {
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 10px;
     }
+
     h1 {
-        color: #222;
-        font-weight: 600;
-        margin-bottom: 10px;
+        font-size: 2rem;
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
     }
+
     .feed-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
     }
+
     .feed {
         background: white;
-        padding: 15px;
         border-radius: 10px;
-        width: 300px;
+        padding: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .feed:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     }
+
     .feed h2 {
-        font-size: 18px;
-        margin-top: 0;
-        color: #007BFF;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #0077cc;
     }
+
     .feed ul {
         list-style: none;
         padding: 0;
+        margin: 0;
     }
+
     .feed li {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
+
     .feed a {
         text-decoration: none;
-        color: #007BFF;
-        transition: color 0.3s ease;
+        color: #333;
+        transition: color 0.2s;
     }
+
     .feed a:hover {
-        color: #0056b3;
+        color: #0077cc;
     }
-    
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #121212;
-        color: #e0e0e0;
-    }
-    .feed {
-        background: #1e1e1e;
-        box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-    .feed a {
-        color: #90caf9;
-    }
-    header, footer {
+
+    footer {
+        text-align: center;
+        padding: 20px;
         background-color: #1a1a1a;
-        color: #ffffff;
+        color: white;
+        margin-top: 40px;
     }
-}
+
+    footer a {
+        color: #ccc;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    footer a:hover {
+        color: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            background: #121212;
+            color: #eee;
+        }
+
+        .feed {
+            background: #1e1e1e;
+            color: #eee;
+        }
+
+        .feed a {
+            color: #eee;
+        }
+
+        .feed a:hover {
+            color: #66ccff;
+        }
+
+        header, footer {
+            background-color: #000;
+            color: #eee;
+        }
+
+        footer a {
+            color: #aaa;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+    }
 </style>
+
 <link href="https://img.icons8.com/ios-filled/50/news.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 </head>
