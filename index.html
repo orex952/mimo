@@ -1,80 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pagina Notizie</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #f6d365, #fda085);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #fff;
-    }
-    .btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #ff6f61;
-      border-radius: 5px;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #e94e3c;
-    }
-    #news {
-      margin-top: 30px;
-      text-align: left;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-   -color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Notizie in Tempo Reale dal Mondo</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { text-align: center; }
+        .feed-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .feed { background: white; padding: 15px; border-radius: 8px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .feed h2 { font-size: 18px; margin-top: 0; }
+        .feed ul { list-style: none; padding: 0; }
+        .feed li { margin-bottom: 10px; }
+        .feed a { text-decoration: none; color: #007BFF; }
+    </style>
 </head>
 <body>
-  <h1>Ultime Notizie</h1>
-  <button class="btn" onclick="caricaNotizie()">Carica Notizie</button>
-  <div id="news">Premi il bottone per caricare le notizie.</div>
+    <h1>Notizie in Tempo Reale dal Mondo</h1>
+    <div class="feed-container" id="feeds"></div>
 
-  <script>
-    function caricaNotizie() {
-      fetch('/notizie?country=it&category=technology')
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById('news');
-          container.innerHTML = '';
-          if (data.length === 0) {
-            container.innerHTML = '<p>Nessuna notizia disponibile.</p>';
-          } else {
-            data.forEach(notizia => {
-              const div = document.createElement('div');
-              div.className = 'notizia';
-              div.innerHTML = `
-                <h3>${notizia.titolo}</h3>
-                <p>${notizia.descrizione || 'Nessuna descrizione disponibile.'}</p>
-                <p><strong>Fonte:</strong> ${notizia.fonte}</p>
-                <p><strong>Data:</strong> ${new Date(notizia.data).toLocaleString()}</p>
-                <a href="${notizia.url}" target="_blank">Leggi di più</a>
-              `;
-              container.appendChild(div);
-            });
-          }
-        })
-        .catch(error => {
-          document.getElementById('news').innerText = 'Errore nel caricamento delle notizie.';
-          console.error('Errore:', error);
+    <script>
+        const feeds = [
+            { name: "BBC", url: "https://feeds.bbci.co.uk/news/world/rss.xml" },
+            { name: "CNN", url: "http://rss.cnn.com/rss/cnn_topstories.rss" },
+            { name: "Al Jazeera", url: "https://www.aljazeera.com/xml/rss/all.xml" },
+            { name: "New York Times", url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml" },
+            { name: "NBC", url: "https://feeds.nbcnews.com/nbcnews/public/news" },
+            { name: "France24", url: "https://www.france24.com/en/rss" },
+            { name: "Virgilio", url: "https://www.virgilio.it/rss/home.xml" }
+        ];
+
+        const container = document.getElementById("feeds");
+
+        feeds.forEach(feed => {
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const div = document.createElement("div");
+                    div.className = "feed";
+                    div.innerHTML = `<h2>${feed.name}</h2><ul>` +
+                        data.items.slice(0, 5).map(item => `<li><a href="${item.link}" target="_blank">${item.title}</a></li>`).join("") +
+                        `</ul>`;
+                    container.appendChild(div);
+                })
+                .catch(error => {
+                    console.error("Errore nel caricamento del feed:", feed.name, error);
+                });
         });
-    }
-  </script>
+    </script>
 </body>
 </html>
