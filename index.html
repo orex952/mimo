@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagina Random + Notizie</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pagina Random + Notizie</title>
+<style>
     body {
       background: linear-gradient(to right, #ffecd2, #fcb69f);
       font-family: Arial, sans-serif;
@@ -61,20 +62,21 @@
   </style>
 </head>
 <body>
-  <h1>Benvenuto nella Pagina Random!</h1>
-  <p>Questa pagina non ha uno scopo preciso, ma almeno è carina 😄</p>
-  <button class="btn" onclick="alert('Hai premuto un bottone inutile!')">Cliccami</button>
-
-  <h2 style="margin-top:60px;">Ultime Notizie</h2>
-  <div id="news">Caricamento...</div>
-
-  <script>
+<h1>Benvenuto nella Pagina Random!</h1>
+<p>Questa pagina non ha uno scopo preciso, ma almeno è carina 😄</p>
+<button class="btn" onclick="alert('Hai premuto un bottone inutile!')">Cliccami</button>
+<h2 style="margin-top:60px;">Ultime Notizie</h2>
+<div id="news">Caricamento...</div>
+<script>
     fetch('https://nome-api.onrender.com/notizie?country=it&category=technology')
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById('news');
         container.innerHTML = '';
-        data.forEach(notizia => {
+        if (data.length === 0) {
+  container.innerHTML = '<p>Nessuna notizia disponibile.</p>';
+} else {
+  data.forEach(notizia => {
           const div = document.createElement('div');
           div.className = 'notizia';
           div.innerHTML = `
@@ -85,7 +87,8 @@
             <a href="${notizia.url}" target="_blank">Leggi di più</a>
           `;
           container.appendChild(div);
-        });
+  });
+}
       })
       .catch(error => {
         document.getElementById('news').innerText = 'Errore nel caricamento delle notizie.';
