@@ -1,99 +1,80 @@
-
 <!DOCTYPE html>
-
 <html lang="it">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pagina Random + Notizie</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagina Notizie</title>
+  <style>
     body {
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      background: linear-gradient(to right, #f6d365, #fda085);
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 50px 20px;
-      color: #333;
+      padding: 20px;
     }
     h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.2em;
+      color: #fff;
     }
     .btn {
-      margin-top: 30px;
-      padding: 12px 24px;
+      margin-top: 20px;
+      padding: 10px 20px;
       background-color: #ff6f61;
-      color: white;
+      border-radius: 5px;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
     }
     .btn:hover {
-      background-color: #e85c4f;
+      background-color: #e94e3c;
     }
     #news {
-      margin-top: 50px;
+      margin-top: 30px;
       text-align: left;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-    }
-    .notizia {
-      background-color: #fff;
+   -color: #fff;
       padding: 15px;
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    .notizia h3 {
-      margin: 0;
-      font-size: 1.5em;
-    }
-    .notizia p {
-      margin: 5px 0;
-    }
-    .notizia a {
-      color: #ff6f61;
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
-<h1>Benvenuto nella Pagina Random!</h1>
-<p>Questa pagina non ha uno scopo preciso, ma almeno è carina 😄</p>
-<button class="btn" onclick="alert('Hai premuto un bottone inutile!')">Cliccami</button>
-<h2 style="margin-top:60px;">Ultime Notizie</h2>
-<div id="news">Caricamento...</div>
-<script>
-    fetch('https://nome-api.onrender.com/notizie?country=it&category=technology')
-      .then(response => response.json())
-      .then(data => {
-        const container = document.getElementById('news');
-        container.innerHTML = '';
-        if (data.length === 0) {
-  container.innerHTML = '<p>Nessuna notizia disponibile.</p>';
-} else {
-  data.forEach(notizia => {
-          const div = document.createElement('div');
-          div.className = 'notizia';
-          div.innerHTML = `
-            <h3>${notizia.titolo}</h3>
-            <p>${notizia.descrizione || 'Nessuna descrizione disponibile.'}</p>
-            <p><strong>Fonte:</strong> ${notizia.fonte}</p>
-            <p><strong>Data:</strong> ${new Date(notizia.data).toLocaleString()}</p>
-            <a href="${notizia.url}" target="_blank">Leggi di più</a>
-          `;
-          container.appendChild(div);
-  });
-}
-      })
-      .catch(error => {
-        document.getElementById('news').innerText = 'Errore nel caricamento delle notizie.';
-        console.error('Errore:', error);
-      });
+  <h1>Ultime Notizie</h1>
+  <button class="btn" onclick="caricaNotizie()">Carica Notizie</button>
+  <div id="news">Premi il bottone per caricare le notizie.</div>
+
+  <script>
+    function caricaNotizie() {
+      fetch('/notizie?country=it&category=technology')
+        .then(response => response.json())
+        .then(data => {
+          const container = document.getElementById('news');
+          container.innerHTML = '';
+          if (data.length === 0) {
+            container.innerHTML = '<p>Nessuna notizia disponibile.</p>';
+          } else {
+            data.forEach(notizia => {
+              const div = document.createElement('div');
+              div.className = 'notizia';
+              div.innerHTML = `
+                <h3>${notizia.titolo}</h3>
+                <p>${notizia.descrizione || 'Nessuna descrizione disponibile.'}</p>
+                <p><strong>Fonte:</strong> ${notizia.fonte}</p>
+                <p><strong>Data:</strong> ${new Date(notizia.data).toLocaleString()}</p>
+                <a href="${notizia.url}" target="_blank">Leggi di più</a>
+              `;
+              container.appendChild(div);
+            });
+          }
+        })
+        .catch(error => {
+          document.getElementById('news').innerText = 'Errore nel caricamento delle notizie.';
+          console.error('Errore:', error);
+        });
+    }
   </script>
 </body>
 </html>
