@@ -39,5 +39,23 @@
   <h1>Benvenuto nella Pagina Random!</h1>
   <p>Questa pagina non ha uno scopo preciso, ma almeno è carina 😄</p>
   <button class="btn" onclick="alert('Hai premuto un bottone inutile!')">Cliccami</button>
+  
+  fetch('https://nome-api.onrender.com/notizie?country=it&category=technology')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('news');
+      data.forEach(notizia => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <h3>${notizia.titolo}</h3>
+          <p>${notizia.descrizione}</p>
+          <a href="${notizia.url}" target="_blank">Leggi di più</a>
+          <hr/>
+        `;
+        container.appendChild(div);
+      });
+    });
+
+  
 </body>
 </html>
